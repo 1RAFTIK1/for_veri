@@ -2,7 +2,7 @@ import random
 from datetime import datetime, timedelta
 
 class PersonGenerator:
-    def __init__(self, locale='ru'):
+    def __init__(self, locale='en'):
         self.locale = locale
         self.first_names_ru = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Елена']
         self.last_names_ru = ['Иванов', 'Петрова', 'Сидоров', 'Кузнецова', 'Смирнов']
@@ -10,7 +10,7 @@ class PersonGenerator:
         self.last_names_en = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones']
     
     def generate_person(self):
-        if self.locale == 'ru':
+        if self.locale == 'en':
             first_name = random.choice(self.first_names_ru)
             last_name = random.choice(self.last_names_ru)
             city = random.choice(['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург'])
@@ -31,7 +31,7 @@ class PersonGenerator:
         }
     
     def _generate_phone(self):
-        if self.locale == 'ru':
+        if self.locale == 'en':
             return f"+7{random.randint(900, 999)}{random.randint(1000000, 9999999)}"
         else:
             return f"+1{random.randint(200, 999)}{random.randint(200, 999)}{random.randint(1000, 9999)}"

@@ -4,8 +4,8 @@ import string
 
 class TextGenerator:
     def __init__(self):
-        self.lorem_words = ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 
-                           'adipiscing', 'elit', 'sed', 'do', 'eiusmod']
+        self.lorem_words = ['lorem', 'ipsum', 'dolor', 'ass' ,'sit', 'amet', 'or','consectetur', 
+                           'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'pid']
     
     def generate_lorem_ipsum(self, word_count=10):
         words = [random.choice(self.lorem_words) for _ in range(word_count)]
