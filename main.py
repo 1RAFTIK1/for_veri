@@ -9,32 +9,26 @@ from utils.formatters import format_output
 
 def main():
     parser = argparse.ArgumentParser(description='DataGen CLI - Генератор тестовых данных')
-    
-    # Common arguments - ДОБАВЛЯЕМ ИХ ПЕРВЫМИ
     parser.add_argument('--format', '-f', choices=['json', 'csv', 'table'], 
                        default='table', help='Формат вывода')
     parser.add_argument('--output', '-o', help='Файл для сохранения')
     
     subparsers = parser.add_subparsers(dest='command', help='Доступные команды')
     
-    # Person commands
     person_parser = subparsers.add_parser('person', help='Генерация персональных данных')
     person_parser.add_argument('--count', '-c', type=int, default=1, help='Количество записей')
     person_parser.add_argument('--locale', '-l', default='ru', help='Локаль (ru/en)')
     
-    # Finance commands
     finance_parser = subparsers.add_parser('finance', help='Финансовые данные')
     finance_parser.add_argument('--type', '-t', choices=['card', 'iban', 'transaction'], 
                                default='card', help='Тип финансовых данных')
     finance_parser.add_argument('--count', '-c', type=int, default=1)
     
-    # Text commands
     text_parser = subparsers.add_parser('text', help='Генерация текста')
     text_parser.add_argument('--type', '-t', choices=['lorem', 'password', 'uuid'], 
                             default='lorem', help='Тип текста')
     text_parser.add_argument('--length', '-l', type=int, default=10)
     
-    # Tech commands
     tech_parser = subparsers.add_parser('tech', help='Технические данные')
     tech_parser.add_argument('--type', '-t', 
                             choices=['ip', 'mac', 'useragent', 'domain'], 
@@ -63,7 +57,6 @@ def main():
         sys.exit(1)
 
 def execute_command(args):
-    """Выполнение команды на основе аргументов"""
     if args.command == 'person':
         generator = PersonGenerator(args.locale)
         return [generator.generate_person() for _ in range(args.count)]
